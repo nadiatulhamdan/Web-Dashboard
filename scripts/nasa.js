@@ -2,10 +2,9 @@ const NASA_API_KEY = 'PAiwuCt1wWtG3mPRcdQhaeRMyVPZg2esVAMWzlax';
 
 async function fetchAPOD() {
   try {
-    const response = await fetch(`https://api.nasa.gov/planetary/apod?api_key=${NASA_API_KEY}&_=${Date.now()}`);
-    const data = await response.json();
-
-    console.log('APOD data:', data);  // <-- add this to check what's returned
+    const response = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(`https://api.nasa.gov/planetary/apod?api_key=${NASA_API_KEY}`)}`);
+    const dataWrapper = await response.json();
+    const data = JSON.parse(dataWrapper.contents);
 
     const apodDiv = document.getElementById('apod');
 
@@ -35,6 +34,7 @@ async function fetchAPOD() {
     console.error(error);
   }
 }
+
 
 async function fetchMarsPhotos() {
   try {
