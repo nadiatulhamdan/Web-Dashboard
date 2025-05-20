@@ -81,8 +81,10 @@ section {
 
 #mars-photos {
   display: flex;
-  gap: 10px; /* space between items */
-  flex-wrap: nowrap; /* keep all items in one line */
-  align-items: center; /* vertically center if different heights */
+  gap: 10px;      /* space between photos */
+  flex-wrap: nowrap; /* keep in one line */
+  overflow-x: auto;  /* scroll if too many */
+  align-items: center; /* vertically center */
 }
+
 
