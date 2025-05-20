@@ -1,4 +1,4 @@
-const NASA_API_KEY = 'PAiwuCt1wWtG3mPRcdQhaeRMyVPZg2esVAMWzlax'; // Your NASA API key
+const NASA_API_KEY = 'PAiwuCt1wWtG3mPRcdQhaeRMyVPZg2esVAMWzlax';
 
 async function fetchAPOD() {
   try {
