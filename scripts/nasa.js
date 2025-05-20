@@ -1,8 +1,8 @@
-const NASA_API_KEY = 'PAiwuCt1wWtG3mPRcdQhaeRMyVPZg2esVAMWzlax'; // Declare once
+const NASA_API_KEY = 'PAiwuCt1wWtG3mPRcdQhaeRMyVPZg2esVAMWzlax'; // Your NASA API key
 
 async function fetchAPOD() {
   try {
-    const response = await fetch(`https://api.nasa.gov/planetary/apod?api_key=${NASA_API_KEY}`);
+    const response = await fetch(`https://api.nasa.gov/planetary/apod?api_key=${NASA_API_KEY}&_=${Date.now()}`);
     const data = await response.json();
 
     const apodDiv = document.getElementById('apod');
@@ -21,7 +21,7 @@ async function fetchAPOD() {
 async function fetchMarsPhotos() {
   try {
     const sol = Math.floor(Math.random() * 1000) + 1000;
-    const response = await fetch(`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=${sol}&api_key=${NASA_API_KEY}`);
+    const response = await fetch(`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=${sol}&api_key=${NASA_API_KEY}&_=${Date.now()}`);
     const data = await response.json();
 
     const photosDiv = document.getElementById('mars-photos');
@@ -46,7 +46,14 @@ async function fetchMarsPhotos() {
   }
 }
 
-window.onload = () => {
+function loadAll() {
   fetchAPOD();
   fetchMarsPhotos();
+}
+
+window.onload = () => {
+  loadAll();
+
+  // Refresh every 5 minutes (300,000 milliseconds)
+  setInterval(loadAll, 5000);
 };
