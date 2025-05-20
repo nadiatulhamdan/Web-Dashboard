@@ -2,7 +2,7 @@ const NASA_API_KEY = 'PAiwuCt1wWtG3mPRcdQhaeRMyVPZg2esVAMWzlax'; // Your NASA AP
 
 async function fetchAPOD() {
   try {
-    const response = await fetch(`https://api.nasa.gov/planetary/apod?api_key=${NASA_API_KEY}&_=${Date.now()}`);
+    const response = await fetch(`https://api.nasa.gov/planetary/apod?api_key=${PAiwuCt1wWtG3mPRcdQhaeRMyVPZg2esVAMWzlax}&_=${Date.now()}`);
     const data = await response.json();
 
     const apodDiv = document.getElementById('apod');
