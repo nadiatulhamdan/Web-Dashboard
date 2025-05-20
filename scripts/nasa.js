@@ -1,23 +1,4 @@
-const NASA_API_KEY = 'PAiwuCt1wWtG3mPRcdQhaeRMyVPZg2esVAMWzlax'; // Replace with your NASA API key if you have one
-
-async function fetchAPOD() {
-  try {
-    const response = await fetch(`https://api.nasa.gov/planetary/apod?api_key=${NASA_API_KEY}`);
-    const data = await response.json();
-
-    const apodDiv = document.getElementById('apod');
-    apodDiv.innerHTML = `
-      <h3>${data.title}</h3>
-      <img src="${data.url}" alt="${data.title}" style="max-width: 100%; height: auto;" />
-      <p>${data.explanation}</p>
-    `;
-  } catch (error) {
-    document.getElementById('apod').textContent = 'Failed to load Astronomy Picture of the Day.';
-    console.error(error);
-  }
-}
-
-const NASA_API_KEY = 'PAiwuCt1wWtG3mPRcdQhaeRMyVPZg2esVAMWzlax'; // Your NASA API key
+const NASA_API_KEY = 'PAiwuCt1wWtG3mPRcdQhaeRMyVPZg2esVAMWzlax'; // Declare once
 
 async function fetchAPOD() {
   try {
@@ -39,7 +20,6 @@ async function fetchAPOD() {
 
 async function fetchMarsPhotos() {
   try {
-    // Random sol between 1000 and 2000 for variety
     const sol = Math.floor(Math.random() * 1000) + 1000;
     const response = await fetch(`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=${sol}&api_key=${NASA_API_KEY}`);
     const data = await response.json();
@@ -70,4 +50,3 @@ window.onload = () => {
   fetchAPOD();
   fetchMarsPhotos();
 };
-
