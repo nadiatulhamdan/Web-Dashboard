@@ -1,69 +1,61 @@
-/* General body and text styling */
 body {
   font-family: Arial, sans-serif;
-  max-width: 900px;
-  margin: 2rem auto;
-  padding: 0 1rem;
-  background: #f9f9f9;
-  text-align: center;
+  margin: 20px;
+  background-color: #f0f4f8;
+  color: #333;
 }
 
 h1 {
-  color: #333;
-  margin-bottom: 30px;
   text-align: center;
+  margin-bottom: 30px;
 }
 
-/* Sections styling */
-section {
-  margin-bottom: 3rem;
-  background: #fff;
-  border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  margin: 10px auto;
-  max-width: 600px;
-}
-
-/* APOD image styles */
-#apod img {
-  display: block;
-  margin: 1rem auto;
-  max-width: 100%;
-  border-radius: 10px;
-  height: auto;
-}
-
-/* Mars photos container - horizontal scrolling row */
-#mars-photos {
+.content-container {
   display: flex;
-  gap: 10px;           /* space between photos */
-  flex-wrap: nowrap;   /* keep photos in one line */
-  overflow-x: auto;    /* horizontal scroll if needed */
-  align-items: center; /* vertical center */
-  padding: 10px 0;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 10px;
+  flex-wrap: wrap;
 }
 
-/* Mars photos images */
-#mars-photos img {
-  display: inline-block;
-  margin: 0;
-  max-width: 150px;
+#apod-section,
+#mars-photos-section {
+  flex: 1;
+  min-width: 300px;
+  max-width: 48%;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+img {
+  max-width: 100%;
   border-radius: 8px;
-  height: auto;
 }
 
-/* Buttons */
 button {
-  margin-top: 15px;
-  padding: 10px 20px;
-  background-color: #0a7cff;
+  margin-top: 10px;
+  padding: 8px 12px;
+  background-color: #0077cc;
   color: white;
   border: none;
-  border-radius: 8px;
+  border-radius: 5px;
   cursor: pointer;
 }
 
 button:hover {
-  background-color: #055ec0;
+  background-color: #005fa3;
+}
+
+@media (max-width: 768px) {
+  .content-container {
+    flex-direction: column;
+  }
+
+  #apod-section,
+  #mars-photos-section {
+    max-width: 100%;
+  }
 }
