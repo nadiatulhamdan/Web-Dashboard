@@ -84,5 +84,5 @@ window.onload = () => {
   loadAll();
 
   // Refresh every 5 minutes (300,000 milliseconds)
-  setInterval(loadAll, 5000);
+  setInterval(loadAll, 10000);
 };
