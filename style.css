@@ -45,22 +45,14 @@ button:hover {
   background-color: #055ec0;
 }
 
-.quote-box {
-  max-width: 600px;
-  margin: auto;
-  padding: 20px;
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+.book-item {
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 15px;
+}
+.book-item img {
+  max-width: 120px;
+  float: right;
+  margin-left: 10px;
 }
 
-#quoteText {
-  font-size: 1.5em;
-  font-style: italic;
-  margin-bottom: 15px;
-}
-
-#quoteAuthor {
-  font-weight: bold;
-  color: #555;
-}
