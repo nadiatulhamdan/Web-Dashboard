@@ -1,36 +1,59 @@
+/* General body and text styling */
 body {
-  font-family: 'Segoe UI', sans-serif;
+  font-family: Arial, sans-serif;
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0 1rem;
   background: #f9f9f9;
   text-align: center;
-  padding: 40px;
 }
 
 h1 {
   color: #333;
   margin-bottom: 30px;
+  text-align: center;
 }
 
-.container {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-}
-
-.section {
+/* Sections styling */
+section {
+  margin-bottom: 3rem;
   background: #fff;
   border-radius: 12px;
   padding: 20px;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  margin: 10px;
-  width: 300px;
+  margin: 10px auto;
+  max-width: 600px;
 }
 
-.section img {
+/* APOD image styles */
+#apod img {
+  display: block;
+  margin: 1rem auto;
   max-width: 100%;
+  border-radius: 10px;
   height: auto;
-  border-radius: 8px;
 }
 
+/* Mars photos container - horizontal scrolling row */
+#mars-photos {
+  display: flex;
+  gap: 10px;           /* space between photos */
+  flex-wrap: nowrap;   /* keep photos in one line */
+  overflow-x: auto;    /* horizontal scroll if needed */
+  align-items: center; /* vertical center */
+  padding: 10px 0;
+}
+
+/* Mars photos images */
+#mars-photos img {
+  display: inline-block;
+  margin: 0;
+  max-width: 150px;
+  border-radius: 8px;
+  height: auto;
+}
+
+/* Buttons */
 button {
   margin-top: 15px;
   padding: 10px 20px;
@@ -44,47 +67,3 @@ button {
 button:hover {
   background-color: #055ec0;
 }
-
-.book-item {
-  margin-bottom: 20px;
-  border-bottom: 1px solid #ddd;
-  padding-bottom: 15px;
-}
-.book-item img {
-  max-width: 120px;
-  float: right;
-  margin-left: 10px;
-}
-
-body {
-  font-family: Arial, sans-serif;
-  max-width: 900px;
-  margin: 2rem auto;
-  padding: 0 1rem;
-}
-
-h1 {
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-section {
-  margin-bottom: 3rem;
-}
-
-#apod img, #mars-photos img {
-  display: block;
-  margin: 1rem auto;
-  max-width: 100%;
-  border-radius: 10px;
-}
-
-#mars-photos {
-  display: flex;
-  gap: 10px;      /* space between photos */
-  flex-wrap: nowrap; /* keep in one line */
-  overflow-x: auto;  /* scroll if too many */
-  align-items: center; /* vertically center */
-}
-
-
