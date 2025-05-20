@@ -25,7 +25,7 @@ async function fetchMarsPhotos() {
     const data = await response.json();
 
     const photosDiv = document.getElementById('mars-photos');
-    photosDiv.innerHTML = '';
+    photosDiv.innerHTML = '';  // Clear any existing content
 
     if (!data.photos || data.photos.length === 0) {
       photosDiv.textContent = 'No photos available for this sol. Try refreshing!';
@@ -33,11 +33,21 @@ async function fetchMarsPhotos() {
     }
 
     data.photos.slice(0, 5).forEach(photo => {
+      const container = document.createElement('div');
+      container.style = 'display: inline-block; margin: 5px; text-align: center;';
+
       const img = document.createElement('img');
       img.src = photo.img_src;
       img.alt = `Mars photo taken by rover ${photo.rover.name}`;
-      img.style = 'width: 150px; margin: 5px; border-radius: 8px;';
-      photosDiv.appendChild(img);
+      img.style = 'width: 150px; border-radius: 8px;';
+
+      const caption = document.createElement('p');
+      caption.textContent = img.alt;
+      caption.style = 'font-size: 12px; max-width: 150px; margin-top: 5px;';
+
+      container.appendChild(img);
+      container.appendChild(caption);
+      photosDiv.appendChild(container);
     });
   } catch (error) {
     const photosDiv = document.getElementById('mars-photos');
@@ -45,6 +55,7 @@ async function fetchMarsPhotos() {
     console.error(error);
   }
 }
+
 
 function loadAll() {
   fetchAPOD();
