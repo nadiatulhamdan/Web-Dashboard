@@ -2,15 +2,33 @@ const NASA_API_KEY = 'PAiwuCt1wWtG3mPRcdQhaeRMyVPZg2esVAMWzlax'; // Your NASA AP
 
 async function fetchAPOD() {
   try {
-    const response = await fetch(`https://api.nasa.gov/planetary/apod?api_key=${PAiwuCt1wWtG3mPRcdQhaeRMyVPZg2esVAMWzlax}&_=${Date.now()}`);
+    const response = await fetch(`https://api.nasa.gov/planetary/apod?api_key=${NASA_API_KEY}&_=${Date.now()}`);
     const data = await response.json();
 
+    console.log('APOD data:', data);  // <-- add this to check what's returned
+
     const apodDiv = document.getElementById('apod');
+
+    if (!data || !data.url) {
+      apodDiv.innerHTML = '<p>Could not load APOD data.</p>';
+      return;
+    }
+
+    let mediaHtml = '';
+    if (data.media_type === 'image') {
+      mediaHtml = `<img src="${data.url}" alt="${data.title}" style="max-width: 100%; height: auto;" />`;
+    } else if (data.media_type === 'video') {
+      mediaHtml = `<iframe src="${data.url}" frameborder="0" allowfullscreen style="width:100%; height:400px;"></iframe>`;
+    } else {
+      mediaHtml = '<p>Media not available</p>';
+    }
+
     apodDiv.innerHTML = `
       <h3>${data.title}</h3>
-      <img src="${data.url}" alt="${data.title}" style="max-width: 100%; height: auto;" />
+      ${mediaHtml}
       <p>${data.explanation}</p>
     `;
+
   } catch (error) {
     const apodDiv = document.getElementById('apod');
     apodDiv.textContent = 'Failed to load Astronomy Picture of the Day.';
