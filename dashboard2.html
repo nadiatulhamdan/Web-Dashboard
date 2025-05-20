@@ -3,71 +3,32 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>🚀 Space Explorer</title>
+  <title>Space Explorer</title>
   <link rel="stylesheet" href="style.css" />
-  <style>
-    /* Optional quick styles if style.css isn't ready */
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #0b0c10;
-      color: #c5c6c7;
-      margin: 0;
-      padding: 20px;
-      text-align: center;
-    }
-
-    h1 {
-      color: #66fcf1;
-    }
-
-    section {
-      margin-top: 40px;
-    }
-
-    #apod img,
-    #apod iframe {
-      max-width: 100%;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.5);
-    }
-
-    #mars-photos {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 10px;
-    }
-
-    #mars-photos div {
-      background-color: #1f2833;
-      padding: 10px;
-      border-radius: 8px;
-      max-width: 160px;
-    }
-
-    #mars-photos img {
-      width: 100%;
-      border-radius: 5px;
-    }
-
-    #mars-photos p {
-      font-size: 12px;
-      margin-top: 5px;
-    }
-  </style>
 </head>
 <body>
   <h1>🚀 Space Explorer</h1>
 
-  <section id="apod-section">
-    <h2>Astronomy Picture of the Day</h2>
-    <div id="apod">Loading Astronomy Picture of the Day...</div>
-  </section>
+  <div class="content-container">
+    <section id="apod-section">
+      <h2>Astronomy Picture of the Day</h2>
+      <input type="date" id="apod-date" />
+      <button onclick="fetchAPOD()">🔄 Refresh APOD</button>
+      <div id="apod">Loading Astronomy Picture of the Day...</div>
+    </section>
 
-  <section id="mars-photos-section">
-    <h2>Mars Rover Photos</h2>
-    <div id="mars-photos">Loading Mars photos...</div>
-  </section>
+    <section id="mars-photos-section">
+      <h2>Mars Rover Photos</h2>
+      <label for="rover-select">Choose Rover:</label>
+      <select id="rover-select">
+        <option value="curiosity" selected>Curiosity</option>
+        <option value="perseverance">Perseverance</option>
+        <option value="opportunity">Opportunity</option>
+      </select>
+      <button onclick="fetchMarsPhotos()">🔄 Refresh Mars Photos</button>
+      <div id="mars-photos">Loading Mars photos...</div>
+    </section>
+  </div>
 
   <script src="scripts/nasa.js"></script>
 </body>
