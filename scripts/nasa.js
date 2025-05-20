@@ -1,4 +1,4 @@
-const NASA_API_KEY = 'DEMO_KEY'; // Replace with your NASA API key if you have one
+const NASA_API_KEY = 'PAiwuCt1wWtG3mPRcdQhaeRMyVPZg2esVAMWzlax'; // Replace with your NASA API key if you have one
 
 async function fetchAPOD() {
   try {
