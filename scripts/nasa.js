@@ -2,7 +2,11 @@ const NASA_API_KEY = 'PAiwuCt1wWtG3mPRcdQhaeRMyVPZg2esVAMWzlax';
 
 async function fetchAPOD() {
   try {
-    const response = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(`https://api.nasa.gov/planetary/apod?api_key=${NASA_API_KEY}`)}`);
+    const today = new Date().toISOString().split('T')[0]; // Format: YYYY-MM-DD
+    const apodURL = `https://api.nasa.gov/planetary/apod?api_key=${NASA_API_KEY}&date=${today}`;
+    const proxyURL = `https://api.allorigins.win/get?url=${encodeURIComponent(apodURL)}`;
+
+    const response = await fetch(proxyURL);
     const dataWrapper = await response.json();
     const data = JSON.parse(dataWrapper.contents);
 
@@ -27,23 +31,20 @@ async function fetchAPOD() {
       ${mediaHtml}
       <p>${data.explanation}</p>
     `;
-
   } catch (error) {
-    const apodDiv = document.getElementById('apod');
-    apodDiv.textContent = 'Failed to load Astronomy Picture of the Day.';
+    document.getElementById('apod').textContent = 'Failed to load Astronomy Picture of the Day.';
     console.error(error);
   }
 }
 
-
 async function fetchMarsPhotos() {
   try {
     const sol = Math.floor(Math.random() * 1000) + 1000;
-    const response = await fetch(`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=${sol}&api_key=${NASA_API_KEY}&_=${Date.now()}`);
+    const response = await fetch(`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=${sol}&api_key=${NASA_API_KEY}`);
     const data = await response.json();
 
     const photosDiv = document.getElementById('mars-photos');
-    photosDiv.innerHTML = '';  // Clear any existing content
+    photosDiv.innerHTML = ''; // Clear previous
 
     if (!data.photos || data.photos.length === 0) {
       photosDiv.textContent = 'No photos available for this sol. Try refreshing!';
@@ -68,12 +69,10 @@ async function fetchMarsPhotos() {
       photosDiv.appendChild(container);
     });
   } catch (error) {
-    const photosDiv = document.getElementById('mars-photos');
-    photosDiv.textContent = 'Failed to load Mars photos.';
+    document.getElementById('mars-photos').textContent = 'Failed to load Mars photos.';
     console.error(error);
   }
 }
-
 
 function loadAll() {
   fetchAPOD();
@@ -83,6 +82,6 @@ function loadAll() {
 window.onload = () => {
   loadAll();
 
-  // Refresh every 5 minutes (300,000 milliseconds)
+  // Refresh every 10 seconds (change to 300000 for 5 mins)
   setInterval(loadAll, 10000);
 };
