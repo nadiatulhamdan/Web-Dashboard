@@ -1,5 +1,7 @@
 const NASA_API_KEY = 'PAiwuCt1wWtG3mPRcdQhaeRMyVPZg2esVAMWzlax';
 
+let marsChartInstance = null; // to store chart instance
+
 async function fetchAPOD() {
   const dateInput = document.getElementById('apod-date');
   const selectedDate = dateInput?.value || '';
@@ -62,6 +64,8 @@ async function fetchMarsPhotos() {
       return;
     }
 
+    const cameraCounts = {};
+
     data.photos.slice(0, 5).forEach(photo => {
       const container = document.createElement('div');
       container.style = 'display: inline-block; margin: 5px; text-align: center;';
@@ -78,7 +82,38 @@ async function fetchMarsPhotos() {
       container.appendChild(img);
       container.appendChild(caption);
       photosDiv.appendChild(container);
+
+      const cameraName = photo.camera.name;
+      cameraCounts[cameraName] = (cameraCounts[cameraName] || 0) + 1;
     });
+
+    // Update the chart
+    const ctx = document.getElementById('marsChart').getContext('2d');
+    if (marsChartInstance) marsChartInstance.destroy();
+
+    marsChartInstance = new Chart(ctx, {
+      type: 'pie',
+      data: {
+        labels: Object.keys(cameraCounts),
+        datasets: [{
+          label: 'Camera Usage',
+          data: Object.values(cameraCounts),
+          backgroundColor: [
+            '#FF6384', '#36A2EB', '#FFCE56', '#AA65E2', '#62D396', '#FF9F40'
+          ],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        plugins: {
+          title: {
+            display: true,
+            text: 'Camera Usage in Mars Rover Photos'
+          }
+        }
+      }
+    });
+
   } catch (error) {
     const photosDiv = document.getElementById('mars-photos');
     photosDiv.textContent = 'Failed to load Mars photos.';
@@ -92,8 +127,7 @@ function loadAll() {
 }
 
 window.onload = () => {
-  // Limit date picker to today
   document.getElementById('apod-date').max = new Date().toISOString().split('T')[0];
   loadAll();
-  setInterval(loadAll, 10000); // refresh every 5 minutes
+  setInterval(loadAll, 10000); // refresh every 10s
 };
