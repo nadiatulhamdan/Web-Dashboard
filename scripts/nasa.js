@@ -2,10 +2,11 @@ const NASA_API_KEY = 'PAiwuCt1wWtG3mPRcdQhaeRMyVPZg2esVAMWzlax';
 
 async function fetchAPOD() {
   try {
-    const dateInput = document.getElementById('apod-date');
-    const selectedDate = dateInput && dateInput.value ? `&date=${dateInput.value}` : '';
-    
-    const response = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(`https://api.nasa.gov/planetary/apod?api_key=${NASA_API_KEY}${selectedDate}`)}`);
+    const today = new Date().toISOString().split('T')[0]; // Format: YYYY-MM-DD
+    const apodURL = `https://api.nasa.gov/planetary/apod?api_key=${NASA_API_KEY}&date=${today}`;
+    const proxyURL = `https://api.allorigins.win/get?url=${encodeURIComponent(apodURL)}`;
+
+    const response = await fetch(proxyURL);
     const dataWrapper = await response.json();
     const data = JSON.parse(dataWrapper.contents);
 
@@ -38,14 +39,12 @@ async function fetchAPOD() {
 
 async function fetchMarsPhotos() {
   try {
-    const rover = document.getElementById('rover-select')?.value || 'curiosity';
     const sol = Math.floor(Math.random() * 1000) + 1000;
-
-    const response = await fetch(`https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?sol=${sol}&api_key=${NASA_API_KEY}`);
+    const response = await fetch(`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=${sol}&api_key=${NASA_API_KEY}`);
     const data = await response.json();
 
     const photosDiv = document.getElementById('mars-photos');
-    photosDiv.innerHTML = ''; // Clear any existing content
+    photosDiv.innerHTML = ''; // Clear previous
 
     if (!data.photos || data.photos.length === 0) {
       photosDiv.textContent = 'No photos available for this sol. Try refreshing!';
@@ -58,7 +57,7 @@ async function fetchMarsPhotos() {
 
       const img = document.createElement('img');
       img.src = photo.img_src;
-      img.alt = `Mars photo taken by ${photo.rover.name}`;
+      img.alt = `Mars photo taken by rover ${photo.rover.name}`;
       img.style = 'width: 150px; border-radius: 8px;';
 
       const caption = document.createElement('p');
@@ -82,6 +81,7 @@ function loadAll() {
 
 window.onload = () => {
   loadAll();
-  // Optional: Auto-refresh every X seconds
-  // setInterval(loadAll, 10000); // 5 mins
+
+  // Refresh every 10 seconds (change to 300000 for 5 mins)
+  setInterval(loadAll, 10000);
 };
