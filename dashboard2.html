@@ -9,82 +9,79 @@
     body {
       font-family: Arial, sans-serif;
       margin: 20px;
-      background: #f0f4f8;
     }
-
     h1 {
       text-align: center;
-      color: #333;
     }
-
-    .container {
+    #container {
       display: flex;
       gap: 20px;
+      justify-content: center;
+      align-items: flex-start;
       flex-wrap: wrap;
     }
-
-    .section-box {
-      flex: 1 1 45%;
-      background: #fff;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    section {
+      border: 1px solid #ccc;
+      padding: 15px;
+      border-radius: 8px;
+      width: 45%;
+      box-sizing: border-box;
     }
-
-    .controls {
-      margin-bottom: 10px;
-    }
-
-    input[type="date"],
-    select {
-      padding: 5px;
-      font-size: 14px;
-      margin-right: 10px;
-    }
-
-    button {
-      padding: 6px 12px;
-      font-size: 14px;
-      cursor: pointer;
-    }
-
-    img {
+    #apod img, #mars-photos img {
       max-width: 100%;
-      height: auto;
       border-radius: 8px;
     }
-
-    iframe {
+    #mars-photos > div {
+      display: inline-block;
+      margin: 5px;
+      text-align: center;
+    }
+    #mars-photos img {
+      width: 150px;
       border-radius: 8px;
+    }
+    #apod-controls, #mars-controls {
+      margin-bottom: 15px;
+    }
+    label {
+      margin-right: 8px;
+      font-weight: bold;
+    }
+    button {
+      margin-left: 8px;
+      padding: 5px 10px;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
   <h1>🚀 Space Explorer</h1>
 
-  <div class="container">
+  <div id="container">
     <!-- APOD Section -->
-    <section class="section-box">
-      <h2>Astronomy Picture of the Day</h2>
-      <div class="controls">
+    <section id="apod-section">
+      <div id="apod-controls">
+        <label for="apod-date">Select APOD Date:</label>
         <input type="date" id="apod-date" />
-        <button onclick="fetchAPOD()">🔄 Refresh APOD</button>
+        <button onclick="fetchAPOD()">Refresh APOD</button>
       </div>
+      <h2>Astronomy Picture of the Day</h2>
       <div id="apod">Loading Astronomy Picture of the Day...</div>
     </section>
 
-    <!-- Mars Photos Section -->
-    <section class="section-box">
-      <h2>Mars Rover Photos</h2>
-      <div class="controls">
-        <select id="rover-select">
+    <!-- Mars Rover Photos Section -->
+    <section id="mars-photos-section">
+      <div id="mars-controls">
+        <label for="rover-select">Choose Rover:</label>
+        <select id="rover-select" onchange="fetchMarsPhotos()">
           <option value="curiosity">Curiosity</option>
           <option value="perseverance">Perseverance</option>
           <option value="opportunity">Opportunity</option>
           <option value="spirit">Spirit</option>
         </select>
-        <button onclick="fetchMarsPhotos()">🔄 Refresh Photos</button>
+        <button onclick="fetchMarsPhotos()">Refresh Mars Photos</button>
       </div>
+      <h2>Mars Rover Photos</h2>
       <div id="mars-photos">Loading Mars photos...</div>
     </section>
   </div>
