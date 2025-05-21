@@ -58,7 +58,7 @@ async function fetchMarsPhotos() {
       container.style = 'display: inline-block; margin: 5px; text-align: center;';
 
       const img = document.createElement('img');
-      img.src = photo.img_src;
+      img.src = photo.img_src;    
       img.alt = `Mars photo taken by rover ${photo.rover.name}`;
       img.style = 'width: 150px; border-radius: 8px;';
 
