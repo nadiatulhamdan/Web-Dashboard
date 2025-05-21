@@ -38,10 +38,19 @@ async function fetchAPOD() {
   }
 }
 
+const roverSolRanges = {
+  curiosity: [0, 3500],
+  opportunity: [0, 5111],
+  spirit: [0, 2208],
+  perseverance: [0, 1000],
+};
+
 async function fetchMarsPhotos() {
   try {
     const rover = document.getElementById('rover-select')?.value || 'curiosity';
-    const sol = Math.floor(Math.random() * 1000) + 1000;
+    const [minSol, maxSol] = roverSolRanges[rover] || [0, 3500];
+    const sol = Math.floor(Math.random() * (maxSol - minSol + 1)) + minSol;
+
     const response = await fetch(`https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?sol=${sol}&api_key=${NASA_API_KEY}`);
     const data = await response.json();
 
@@ -58,7 +67,7 @@ async function fetchMarsPhotos() {
       container.style = 'display: inline-block; margin: 5px; text-align: center;';
 
       const img = document.createElement('img');
-      img.src = photo.img_src;    
+      img.src = photo.img_src;
       img.alt = `Mars photo taken by rover ${photo.rover.name}`;
       img.style = 'width: 150px; border-radius: 8px;';
 
