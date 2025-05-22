@@ -10,12 +10,13 @@ h1 {
   margin-bottom: 30px;
 }
 
-.content-container {
+#container {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 20px;
 }
+
 
 #apod-section,
 #mars-photos-section {
@@ -74,9 +75,10 @@ canvas {
 }
 
 @media (max-width: 768px) {
-  .content-container {
+  #container {
     flex-direction: column;
   }
+}
 
   #apod-section,
   #mars-photos-section {
