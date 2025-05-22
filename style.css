@@ -10,9 +10,32 @@ body {
 
 h1 {
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 15px;
   color: #FFFFFF;
 }
+
+.top-container-padding {
+  padding-top: 15px !important;
+}
+
+.apod-title {
+  text-align: center;
+  margin-bottom: 10px; /* Increased slightly to separate from controls, but consistent */
+}
+
+/* Make sure the H2 for Mars Rover Photos also has this margin */
+#mars-photos-section h2 {
+  text-align: center; /* Ensure Mars section heading is centered */
+  margin-bottom: 10px; /* Consistent with apod-title */
+}
+
+#apod-dynamic-title, /* Target both dynamic titles together for consistency */
+.mars-dynamic-title {
+  text-align: center;
+  margin-top: 15px; /* Adjust this to control space *after* controls, default for mt-3 */
+  margin-bottom: 10px; /* Space below dynamic title before content (image/photos) */
+}
+
 
 #container {
   display: flex;
@@ -88,7 +111,7 @@ img {
 
 #apod-controls,
 #mars-controls {
-  margin-bottom: 15px;
+  margin-bottom: 10px; /* Reduced from 15px to 10px to pull dynamic titles closer */
 }
 
 label {
@@ -109,9 +132,6 @@ button {
 
 button:hover {
   background-color: #005fa3;
-}
-.apod-dynamic-title {
-  text-align: center;
 }
 
 canvas {
@@ -136,7 +156,7 @@ canvas {
 
   #apod img,
   #apod iframe {
-    max-height: 250px;
+    max-height: 300px;
   }
 
   #apod p {
