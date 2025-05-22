@@ -106,7 +106,7 @@ async function fetchMarsPhotos() {
       },
       options: {
         responsive: true,
-        maintainAspectRatio: false,
+        maintainAspectRatio: true,
         plugins: {
           title: {
             display: true,
