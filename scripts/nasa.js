@@ -1,6 +1,6 @@
 const NASA_API_KEY = 'PAiwuCt1wWtG3mPRcdQhaeRMyVPZg2esVAMWzlax';
 
-let marsChartInstance = null; // to store chart instance
+let marsChartInstance = null;
 
 async function fetchAPOD() {
   const dateInput = document.getElementById('apod-date');
@@ -16,35 +16,35 @@ async function fetchAPOD() {
     const apodDiv = document.getElementById('apod');
 
     if (!data || !data.url) {
-      apodDiv.innerHTML = '<p>Could not load APOD data.</p>';
+      apodDiv.innerHTML = '<p>Could not load APOD data. Please try a different date or refresh.</p>';
       return;
     }
 
     let mediaHtml = '';
     if (data.media_type === 'image') {
-      mediaHtml = `<img src="${data.url}" alt="${data.title}" />`;
+      mediaHtml = `<img src="${data.url}" alt="${data.title}" class="img-fluid" />`;
     } else if (data.media_type === 'video') {
-      mediaHtml = `<iframe src="${data.url}" frameborder="0" allowfullscreen style="width:100%; height:400px;"></iframe>`;
+      mediaHtml = `<iframe src="${data.url}" frameborder="0" allowfullscreen class="w-100" style="height:400px;"></iframe>`;
     } else {
-      mediaHtml = '<p>Media not available</p>';
+      mediaHtml = '<p>Media not available for this date.</p>';
     }
 
     apodDiv.innerHTML = `
-      <h3>${data.title}</h3>
+      <h3 class="mt-3">${data.title}</h3>
       ${mediaHtml}
-      <p>${data.explanation}</p>
+      <p class="mt-3">${data.explanation}</p>
     `;
   } catch (error) {
-    document.getElementById('apod').innerHTML = 'Could not load APOD data.';
+    document.getElementById('apod').innerHTML = '<p>Error loading APOD data. Please check your network connection or API key.</p>';
     console.error('APOD Fetch Error:', error);
   }
 }
 
 const roverSolRanges = {
   curiosity: [0, 3500],
+  perseverance: [0, 1000],
   opportunity: [0, 5111],
   spirit: [0, 2208],
-  perseverance: [0, 1000],
 };
 
 async function fetchMarsPhotos() {
@@ -60,68 +60,64 @@ async function fetchMarsPhotos() {
     photosDiv.innerHTML = '';
 
     if (!data.photos || data.photos.length === 0) {
-      photosDiv.textContent = 'No photos available for this sol. Try refreshing!';
+      photosDiv.textContent = `No photos available for ${rover} on sol ${sol}. Try refreshing or selecting a different rover!`;
+      if (marsChartInstance) marsChartInstance.destroy();
       return;
     }
 
     const cameraCounts = {};
 
-    const photoGrid = document.createElement('div');
-    photoGrid.style.display = 'flex';
-    photoGrid.style.flexWrap = 'wrap';
-    photoGrid.style.justifyContent = 'center';
-    photoGrid.style.gap = '15px';
-
     data.photos.slice(0, 5).forEach(photo => {
       const container = document.createElement('div');
-      container.style = `
-        width: 30%;
-        min-width: 150px;
-        max-width: 200px;
-        text-align: center;
-      `;
-
       const img = document.createElement('img');
       img.src = photo.img_src;
       img.alt = `Mars photo taken by rover ${photo.rover.name}`;
-      img.style = 'width: 100%; border-radius: 8px;';
 
       const caption = document.createElement('p');
-      caption.textContent = img.alt;
+      caption.textContent = `Camera: ${photo.camera.full_name || photo.camera.name}`;
       caption.style = 'font-size: 12px; margin-top: 5px;';
 
       container.appendChild(img);
       container.appendChild(caption);
-      photoGrid.appendChild(container);
+      photosDiv.appendChild(container);
 
       const cameraName = photo.camera.name;
       cameraCounts[cameraName] = (cameraCounts[cameraName] || 0) + 1;
     });
 
-    photosDiv.appendChild(photoGrid);
-
-    // Update the chart
     const ctx = document.getElementById('marsChart').getContext('2d');
-    if (marsChartInstance) marsChartInstance.destroy();
+    if (marsChartInstance) {
+      marsChartInstance.destroy();
+    }
 
     marsChartInstance = new Chart(ctx, {
       type: 'pie',
       data: {
         labels: Object.keys(cameraCounts),
         datasets: [{
-          label: 'Camera Usage',
+          label: 'Number of Photos',
           data: Object.values(cameraCounts),
           backgroundColor: [
-            '#FF6384', '#36A2EB', '#FFCE56', '#AA65E2', '#62D396', '#FF9F40'
+            '#FF6384', '#36A2EB', '#FFCE56', '#AA65E2', '#62D396', '#FF9F40', '#4BC0C0', '#9966FF'
           ],
+          borderColor: 'rgba(255, 255, 255, 0.8)',
           borderWidth: 1
         }]
       },
       options: {
+        responsive: true,
+        maintainAspectRatio: false,
         plugins: {
           title: {
             display: true,
-            text: 'Camera Usage in Mars Rover Photos'
+            text: 'Camera Usage in Mars Rover Photos',
+            color: '#333'
+          },
+          legend: {
+            position: 'bottom',
+            labels: {
+              color: '#333'
+            }
           }
         }
       }
@@ -129,8 +125,9 @@ async function fetchMarsPhotos() {
 
   } catch (error) {
     const photosDiv = document.getElementById('mars-photos');
-    photosDiv.textContent = 'Failed to load Mars photos.';
+    photosDiv.textContent = 'Failed to load Mars photos. Please check your network connection or API key.';
     console.error('Mars Photo Fetch Error:', error);
+    if (marsChartInstance) marsChartInstance.destroy();
   }
 }
 
@@ -142,5 +139,5 @@ function loadAll() {
 window.onload = () => {
   document.getElementById('apod-date').max = new Date().toISOString().split('T')[0];
   loadAll();
-  setInterval(loadAll, 10000); // refresh every 10s
+  // setInterval(loadAll, 10000);
 };
