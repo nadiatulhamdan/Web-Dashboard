@@ -28,11 +28,32 @@ h1 {
   border-radius: 10px;
   padding: 15px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
 }
 
 img {
   max-width: 100%;
   border-radius: 8px;
+}
+
+#mars-photos > div {
+  display: inline-block;
+  margin: 5px;
+  text-align: center;
+}
+
+#mars-photos img {
+  width: 150px;
+}
+
+#apod-controls,
+#mars-controls {
+  margin-bottom: 15px;
+}
+
+label {
+  margin-right: 8px;
+  font-weight: bold;
 }
 
 button {
@@ -43,12 +64,18 @@ button {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+
+  &:hover {
+    background-color: #005fa3;
+  }
 }
 
-button:hover {
-  background-color: #005fa3;
+canvas {
+  margin-top: 20px;
+  max-width: 100%;
 }
 
+// Responsive
 @media (max-width: 768px) {
   .content-container {
     flex-direction: column;
