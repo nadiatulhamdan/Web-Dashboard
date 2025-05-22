@@ -73,6 +73,7 @@ async function fetchMarsPhotos() {
     photosTitle.style.textAlign = 'center';
     photosTitle.style.marginBottom = '15px';
     photosTitle.style.color = '#333';
+    photosTitle.className = 'mt-3';
     photosDiv.appendChild(photosTitle);
 
     const imageWrapper = document.createElement('div');
