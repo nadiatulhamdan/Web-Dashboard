@@ -23,12 +23,12 @@ h1 {
   margin-bottom: 10px;
 }
 
-#mars-photos-section h2 {
+.mars-photos-section h2 {
   text-align: center;
   margin-bottom: 10px;
 }
 
-#apod-dynamic-title,
+.apod-dynamic-title,
 .mars-dynamic-title {
   text-align: center;
   margin-top: 15px;
@@ -42,8 +42,8 @@ h1 {
   gap: 20px;
 }
 
-#apod-section,
-#mars-photos-section {
+.apod-section,
+.mars-photos-section {
   flex: 1 1 48%;
   background-color: rgba(255, 255, 255, 0.92);
   border: 1px solid #ccc;
@@ -58,8 +58,8 @@ h1 {
   overflow-y: auto;
 }
 
-#apod img,
-#apod iframe {
+.apod img,
+.apod iframe {
   max-height: 350px;
   width: auto;
   object-fit: contain;
@@ -68,7 +68,7 @@ h1 {
   border-radius: 8px;
 }
 
-#apod p {
+.apod p {
   max-height: 150px;
   overflow-y: auto;
   margin-top: 15px;
@@ -80,7 +80,7 @@ img {
   border-radius: 8px;
 }
 
-#mars-images-wrapper {
+.mars-images-wrapper {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -91,7 +91,7 @@ img {
   flex-shrink: 0;
 }
 
-#mars-images-wrapper > div {
+.mars-images-wrapper > div {
   width: 150px;
   min-width: 150px;
   max-width: 200px;
@@ -100,15 +100,15 @@ img {
   flex-grow: 0;
 }
 
-#mars-images-wrapper img {
+.mars-images-wrapper img {
   width: 150px;
   height: auto;
   display: block;
   border-radius: 8px;
 }
 
-#apod-controls,
-#mars-controls {
+.apod-controls,
+.mars-controls {
   margin-bottom: 10px;
 }
 
