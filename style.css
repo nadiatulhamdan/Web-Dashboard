@@ -78,8 +78,7 @@ canvas {
   #container {
     flex-direction: column;
   }
-}
-
+  
   #apod-section,
   #mars-photos-section {
     max-width: 100%;
