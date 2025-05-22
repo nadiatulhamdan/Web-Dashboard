@@ -12,11 +12,10 @@ h1 {
 
 #container {
   display: flex;
-  justify-content: space-between;
   flex-wrap: wrap;
+  justify-content: space-between;
   gap: 20px;
 }
-
 
 #apod-section,
 #mars-photos-section {
@@ -63,10 +62,10 @@ button {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+}
 
-  &:hover {
-    background-color: #005fa3;
-  }
+button:hover {
+  background-color: #005fa3;
 }
 
 canvas {
@@ -74,11 +73,12 @@ canvas {
   max-width: 100%;
 }
 
+/* Responsive: stack on smaller screens */
 @media (max-width: 768px) {
   #container {
     flex-direction: column;
   }
-  
+
   #apod-section,
   #mars-photos-section {
     max-width: 100%;
