@@ -66,26 +66,39 @@ async function fetchMarsPhotos() {
 
     const cameraCounts = {};
 
+    const photoGrid = document.createElement('div');
+    photoGrid.style.display = 'flex';
+    photoGrid.style.flexWrap = 'wrap';
+    photoGrid.style.justifyContent = 'center';
+    photoGrid.style.gap = '15px';
+
     data.photos.slice(0, 5).forEach(photo => {
       const container = document.createElement('div');
-      container.style = 'display: inline-block; margin: 5px; text-align: center;';
+      container.style = `
+        width: 30%;
+        min-width: 150px;
+        max-width: 200px;
+        text-align: center;
+      `;
 
       const img = document.createElement('img');
       img.src = photo.img_src;
       img.alt = `Mars photo taken by rover ${photo.rover.name}`;
-      img.style = 'width: 150px; border-radius: 8px;';
+      img.style = 'width: 100%; border-radius: 8px;';
 
       const caption = document.createElement('p');
       caption.textContent = img.alt;
-      caption.style = 'font-size: 12px; max-width: 150px; margin-top: 5px;';
+      caption.style = 'font-size: 12px; margin-top: 5px;';
 
       container.appendChild(img);
       container.appendChild(caption);
-      photosDiv.appendChild(container);
+      photoGrid.appendChild(container);
 
       const cameraName = photo.camera.name;
       cameraCounts[cameraName] = (cameraCounts[cameraName] || 0) + 1;
     });
+
+    photosDiv.appendChild(photoGrid);
 
     // Update the chart
     const ctx = document.getElementById('marsChart').getContext('2d');
