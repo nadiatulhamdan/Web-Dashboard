@@ -67,7 +67,7 @@ async function fetchMarsPhotos() {
 
     const cameraCounts = {};
 
-    data.photos.slice(0, 5).forEach(photo => {
+    data.photos.slice(0, 4).forEach(photo => {
       const container = document.createElement('div');
       const img = document.createElement('img');
       img.src = photo.img_src;
@@ -106,7 +106,7 @@ async function fetchMarsPhotos() {
       },
       options: {
         responsive: true,
-        maintainAspectRatio: true,
+        maintainAspectRatio: false,
         plugins: {
           title: {
             display: true,
