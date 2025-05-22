@@ -14,15 +14,15 @@ h1 {
   display: flex;
   justify-content: space-between;
   gap: 20px;
-  padding: 10px;
   flex-wrap: wrap;
+  padding: 10px;
 }
 
 #apod-section,
 #mars-photos-section {
   flex: 1;
   min-width: 300px;
-  max-width: 48%;
+  max-width: 48%; // Ensures side-by-side
   background-color: white;
   border: 1px solid #ccc;
   border-radius: 10px;
@@ -75,14 +75,13 @@ canvas {
   max-width: 100%;
 }
 
-// Responsive
 @media (max-width: 768px) {
   .content-container {
-    flex-direction: column;
+    flex-direction: column; // Stack vertically on small screens
   }
 
   #apod-section,
   #mars-photos-section {
-    max-width: 100%;
+    max-width: 100%; // Full width when stacked
   }
 }
