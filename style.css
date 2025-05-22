@@ -1,13 +1,17 @@
 body {
   font-family: Arial, sans-serif;
-  margin: 20px;
-  background-color: #f0f4f8;
-  color: #333;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to bottom, #0A0A2A, #000000);
+  background-attachment: fixed;
+  min-height: 100vh;
+  color: #E0E0E0;
 }
 
 h1 {
   text-align: center;
   margin-bottom: 30px;
+  color: #FFFFFF;
 }
 
 #container {
@@ -17,11 +21,10 @@ h1 {
   gap: 20px;
 }
 
-
 #apod-section,
 #mars-photos-section {
   flex: 1 1 48%;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.92);
   border: 1px solid #ccc;
   border-radius: 10px;
   padding: 15px;
@@ -35,15 +38,32 @@ img {
   border-radius: 8px;
 }
 
+#mars-photos {
+  max-height: 400px;
+  overflow-y: auto;
+  margin-bottom: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+}
+
 #mars-photos > div {
   display: inline-block;
   margin: 5px;
   text-align: center;
+  width: 150px;
+  min-width: 150px;
+  max-width: 200px;
 }
 
 #mars-photos img {
   width: 150px;
+  height: auto;
+  display: block;
+  border-radius: 8px;
 }
+
 
 #apod-controls,
 #mars-controls {
@@ -53,6 +73,7 @@ img {
 label {
   margin-right: 8px;
   font-weight: bold;
+  color: #333;
 }
 
 button {
@@ -63,16 +84,22 @@ button {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+}
 
-  &:hover {
-    background-color: #005fa3;
-  }
+button:hover {
+  background-color: #005fa3;
 }
 
 canvas {
   margin-top: 20px;
   max-width: 100%;
+  min-height: 200px;
 }
+
+@media (max-width: 768px) {
+  #container {
+    flex-direction: column;
+  }
 
   #apod-section,
   #mars-photos-section {
