@@ -30,10 +30,10 @@ async function fetchAPOD() {
     }
 
     apodDiv.innerHTML = `
-      <h4 class="mt-3">${data.title}</h4>
-      ${mediaHtml}
-      <p class="mt-3">${data.explanation}</p>
-    `;
+    <h4 class="apod-dynamic-title mt-3">${data.title}</h4>
+    ${mediaHtml}
+    <p class="mt-3">${data.explanation}</p>
+  `;
   } catch (error) {
     document.getElementById('apod').innerHTML = '<p>Error loading APOD data. Please check your network connection or API key.</p>';
     console.error('APOD Fetch Error:', error);
