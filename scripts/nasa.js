@@ -43,8 +43,6 @@ async function fetchAPOD() {
 const roverSolRanges = {
   curiosity: [0, 3500],
   perseverance: [0, 1000],
-  opportunity: [0, 5111],
-  spirit: [0, 2208],
 };
 
 async function fetchMarsPhotos() {
@@ -70,9 +68,6 @@ async function fetchMarsPhotos() {
     const firstPhotoCameraName = data.photos[0].camera.full_name || data.photos[0].camera.name;
     const photosTitle = document.createElement('h4');
     photosTitle.textContent = `Photos from: ${firstPhotoCameraName}`;
-    photosTitle.style.textAlign = 'center';
-    photosTitle.style.marginBottom = '15px';
-    photosTitle.style.color = '#333';
     photosTitle.className = 'mt-3';
     photosDiv.appendChild(photosTitle);
 
