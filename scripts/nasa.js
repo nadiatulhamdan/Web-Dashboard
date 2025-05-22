@@ -30,7 +30,7 @@ async function fetchAPOD() {
     }
 
     apodDiv.innerHTML = `
-      <h3 class="mt-3">${data.title}</h3>
+      <h4 class="mt-3">${data.title}</h4>
       ${mediaHtml}
       <p class="mt-3">${data.explanation}</p>
     `;
