@@ -67,23 +67,37 @@ async function fetchMarsPhotos() {
 
     const cameraCounts = {};
 
-    data.photos.slice(0, 4).forEach(photo => {
+    const firstPhotoCameraName = data.photos[0].camera.full_name || data.photos[0].camera.name;
+    const photosTitle = document.createElement('h4');
+    photosTitle.textContent = `Photos from: ${firstPhotoCameraName}`;
+    photosTitle.style.textAlign = 'center';
+    photosTitle.style.marginBottom = '15px';
+    photosTitle.style.color = '#333';
+    photosDiv.appendChild(photosTitle);
+
+    const photoGridContainer = document.createElement('div');
+    photoGridContainer.style.display = 'flex';
+    photoGridContainer.style.flexWrap = 'wrap';
+    photoGridContainer.style.justifyContent = 'center';
+    photoGridContainer.style.gap = '15px';
+    photoGridContainer.style.maxHeight = '300px';
+    photoGridContainer.style.overflowY = 'auto';
+    photoGridContainer.style.marginBottom = '15px';
+
+    data.photos.slice(0, 5).forEach(photo => {
       const container = document.createElement('div');
       const img = document.createElement('img');
       img.src = photo.img_src;
       img.alt = `Mars photo taken by rover ${photo.rover.name}`;
 
-      const caption = document.createElement('p');
-      caption.textContent = `Camera: ${photo.camera.full_name || photo.camera.name}`;
-      caption.style = 'font-size: 12px; margin-top: 5px;';
-
       container.appendChild(img);
-      container.appendChild(caption);
-      photosDiv.appendChild(container);
-
+      photoGridContainer.appendChild(container);
+      
       const cameraName = photo.camera.name;
       cameraCounts[cameraName] = (cameraCounts[cameraName] || 0) + 1;
     });
+
+    photosDiv.appendChild(photoGridContainer);
 
     const ctx = document.getElementById('marsChart').getContext('2d');
     if (marsChartInstance) {
@@ -123,6 +137,9 @@ async function fetchMarsPhotos() {
       }
     });
 
+    ctx.canvas.style.height = '300px';
+    ctx.canvas.style.width = '100%';
+
   } catch (error) {
     const photosDiv = document.getElementById('mars-photos');
     photosDiv.textContent = 'Failed to load Mars photos. Please check your network connection or API key.';
@@ -139,5 +156,4 @@ function loadAll() {
 window.onload = () => {
   document.getElementById('apod-date').max = new Date().toISOString().split('T')[0];
   loadAll();
-  // setInterval(loadAll, 10000);
 };
