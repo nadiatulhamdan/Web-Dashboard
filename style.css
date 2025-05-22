@@ -110,6 +110,9 @@ button {
 button:hover {
   background-color: #005fa3;
 }
+.apod-dynamic-title {
+  text-align: center;
+}
 
 canvas {
   margin-top: 20px;
