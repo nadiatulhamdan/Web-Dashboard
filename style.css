@@ -133,7 +133,7 @@ canvas {
 
   #apod img,
   #apod iframe {
-    max-height: 300px;
+    max-height: 250px;
   }
 
   #apod p {
