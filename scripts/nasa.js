@@ -68,7 +68,7 @@ async function fetchMarsPhotos() {
     const firstPhotoCameraName = data.photos[0].camera.full_name || data.photos[0].camera.name;
     const photosTitle = document.createElement('h4');
     photosTitle.textContent = `Photos from: ${firstPhotoCameraName}`;
-    photosTitle.className = 'mt-3 mars-dynamic-title';';
+    photosTitle.className = 'mt-3 mars-dynamic-title';
     photosDiv.appendChild(photosTitle);
 
     const imageWrapper = document.createElement('div');
