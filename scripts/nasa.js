@@ -75,29 +75,22 @@ async function fetchMarsPhotos() {
     photosTitle.style.color = '#333';
     photosDiv.appendChild(photosTitle);
 
-    const photoGridContainer = document.createElement('div');
-    photoGridContainer.style.display = 'flex';
-    photoGridContainer.style.flexWrap = 'wrap';
-    photoGridContainer.style.justifyContent = 'center';
-    photoGridContainer.style.gap = '15px';
-    photoGridContainer.style.maxHeight = '300px';
-    photoGridContainer.style.overflowY = 'auto';
-    photoGridContainer.style.marginBottom = '15px';
+    const imageWrapper = document.createElement('div');
+    imageWrapper.id = 'mars-images-wrapper';
+    photosDiv.appendChild(imageWrapper);
 
-    data.photos.slice(0, 5).forEach(photo => {
+    data.photos.slice(0, 4).forEach(photo => {
       const container = document.createElement('div');
       const img = document.createElement('img');
       img.src = photo.img_src;
       img.alt = `Mars photo taken by rover ${photo.rover.name}`;
 
       container.appendChild(img);
-      photoGridContainer.appendChild(container);
+      imageWrapper.appendChild(container);
       
       const cameraName = photo.camera.name;
       cameraCounts[cameraName] = (cameraCounts[cameraName] || 0) + 1;
     });
-
-    photosDiv.appendChild(photoGridContainer);
 
     const ctx = document.getElementById('marsChart').getContext('2d');
     if (marsChartInstance) {
