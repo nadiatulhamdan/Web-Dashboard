@@ -1,3 +1,4 @@
+/* General page styling */
 body {
   font-family: Arial, sans-serif;
   margin: 20px;
@@ -10,16 +11,18 @@ h1 {
   margin-bottom: 30px;
 }
 
+/* Container: holds APOD + Mars sections side by side */
 #container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
   gap: 20px;
+  justify-content: space-between;
 }
 
+/* Individual sections */
 #apod-section,
 #mars-photos-section {
-  flex: 1 1 48%;
+  flex: 1 1 48%; /* Side-by-side on large screens */
   background-color: white;
   border: 1px solid #ccc;
   border-radius: 10px;
@@ -29,6 +32,7 @@ h1 {
   min-width: 300px;
 }
 
+/* Images */
 img {
   max-width: 100%;
   border-radius: 8px;
@@ -44,6 +48,7 @@ img {
   width: 150px;
 }
 
+/* Form Controls */
 #apod-controls,
 #mars-controls {
   margin-bottom: 15px;
@@ -68,12 +73,13 @@ button:hover {
   background-color: #005fa3;
 }
 
+/* Charts */
 canvas {
   margin-top: 20px;
   max-width: 100%;
 }
 
-/* Responsive: stack on smaller screens */
+/* Responsive: stack vertically on smaller screens */
 @media (max-width: 768px) {
   #container {
     flex-direction: column;
@@ -81,6 +87,7 @@ canvas {
 
   #apod-section,
   #mars-photos-section {
-    max-width: 100%;
+    width: 100%;
+    flex: 1 1 100%;
   }
 }
