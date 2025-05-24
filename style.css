@@ -8,7 +8,7 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background: linear-gradient(270deg, #87CEEB, #B0E0E6, #6A9AC4); /* Sky blue, powder blue, soft cornflower blue */
+  background: linear-gradient(270deg, #1C3F5C, #3F6F8E, #5B8C85); /* Deep ocean, muted teal, forest green */
   background-size: 600% 600%;
   animation: gradientAnimation 15s ease infinite;
   min-height: 100vh;
