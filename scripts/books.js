@@ -33,15 +33,31 @@ async function searchBooks() {
 
     data.items.forEach(item => {
       const book = item.volumeInfo;
+      // Get the infoLink for the book details page
+      const infoLink = item.volumeInfo.infoLink; //
+
       const div = document.createElement('div');
       div.classList.add('book-item');
+      // Add a data attribute for the link, or make the whole div a link
+      div.dataset.infoLink = infoLink; // Store the link as a data attribute
+
+      const fullDescription = book.description || 'No description available.';
+      const truncatedDescription = fullDescription.length > 200 ? fullDescription.substring(0, 200) + '...' : fullDescription;
+
       div.innerHTML = `
         <h3>${book.title}</h3>
         <p><strong>Author(s):</strong> ${book.authors ? book.authors.join(', ') : 'Unknown'}</p>
         <img src="${book.imageLinks ? book.imageLinks.thumbnail : 'https://via.placeholder.com/128x190?text=No+Cover'}" alt="Book cover" />
-        <p>${book.description ? book.description.substring(0, 200) + '...' : 'No description available.'}</p>
-      `;
+        <p class="book-description">${truncatedDescription}</p>
+        `;
       bookListDiv.appendChild(div);
+
+      // Add click event listener to the entire book item
+      div.addEventListener('click', () => {
+          if (div.dataset.infoLink) {
+              window.open(div.dataset.infoLink, '_blank'); // Open link in a new tab
+          }
+      });
       
       if (book.categories && Array.isArray(book.categories)) {
         book.categories.forEach(category => {
