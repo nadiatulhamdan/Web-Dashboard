@@ -1,15 +1,22 @@
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
 body {
   font-family: Arial, sans-serif;
   margin: 0;
-  padding: 20px;
-  background: linear-gradient(to bottom right, #4a7791, #6a9ac4);
-  background-attachment: fixed;
+  padding: 0;
+  background: linear-gradient(270deg, #4a7791, #6a9ac4, #364f6b);
+  background-size: 600% 600%;
+  animation: gradientAnimation 15s ease infinite;
   min-height: 100vh;
   color: #E0E0E0;
   text-align: center;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 }
 
@@ -286,24 +293,121 @@ body > button {
   width: 100%;
 }
 
-.container.text-center {
+/* Homepage specific styles */
+.main-content-wrapper {
+    width: 100%;
+    max-width: 1200px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.hero-section {
+    background-color: rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    padding: 60px 30px;
+    margin-bottom: 50px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    color: #FFFFFF;
+}
+
+.hero-section h1 {
+    font-size: 2.8em;
+    margin-bottom: 15px;
+    color: #FFFFFF;
+}
+
+.hero-section .lead {
+    font-size: 1.3em;
+    margin-bottom: 30px;
+}
+
+.hero-section .btn-light {
+    background-color: #f8f9fa;
+    color: #333;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.hero-section .btn-light:hover {
+    background-color: #e2e6ea;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.container.my-5 {
     background-color: rgba(255, 255, 255, 0.05);
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     max-width: 900px;
     width: 100%;
-    margin-top: 50px;
-    margin-bottom: 50px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.dashboard-description {
+.about-me {
     background-color: rgba(0, 0, 0, 0.3);
-    padding: 15px;
+    padding: 25px;
     border-radius: 8px;
-    margin-bottom: 20px;
-    text-align: left;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
+
+.about-me h2 {
+    color: #FFFFFF;
+    margin-bottom: 15px;
+}
+
+.about-me p {
+    color: #E0E0E0;
+    margin-bottom: 10px;
+}
+
+.custom-hr {
+    border-color: rgba(255, 255, 255, 0.2) !important;
+    border-width: 2px !important;
+    opacity: 0.7;
+}
+
+.dashboards-overview h2 {
+    color: #FFFFFF;
+    margin-bottom: 30px;
+}
+
+.dashboard-card {
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.dashboard-card h3 {
+    color: #FFFFFF;
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.6em;
+}
+
+.dashboard-card p {
+    color: #E0E0E0;
+    margin-bottom: 10px;
+    flex-grow: 1;
+}
+
+.dashboard-card .btn {
+    align-self: flex-start;
+    margin-top: 20px;
+}
+
 
 @media (max-width: 1200px) {
     .book-item {
@@ -318,7 +422,7 @@ body > button {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767.98px) {
   body {
     padding: 10px;
   }
