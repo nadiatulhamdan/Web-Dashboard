@@ -1,174 +1,176 @@
- body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background: linear-gradient(to bottom, #0A0A2A, #000000);
-  background-attachment: fixed;
-  min-height: 100vh;
-  color: #E0E0E0;
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to bottom, #0A0A2A, #000000);
+  background-attachment: fixed;
+  min-height: 100vh;
+  color: #E0E0E0;
 }
 
 h1 {
-  text-align: center;
-  margin-bottom: 15px;
-  color: #FFFFFF;
+  text-align: center;
+  margin-bottom: 15px;
+  color: #FFFFFF;
 }
 
 .top-container-padding {
-  padding-top: 15px !important;
+  padding-top: 15px !important;
 }
 
 .apod-title {
-  text-align: center;
-  margin-bottom: 10px;
+  text-align: center;
+  margin-bottom: 10px;
 }
 
 #mars-photos-section h2 {
-  text-align: center;
-  margin-bottom: 10px;
+  text-align: center;
+  margin-bottom: 10px;
 }
 
 .apod-dynamic-title,
 .mars-dynamic-title {
-  text-align: center;
-  margin-top: 15px;
-  margin-bottom: 10px;
+  text-align: center;
+  margin-top: 15px;
+  margin-bottom: 10px;
 }
 
 #container {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 20px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
 #apod-section,
 #mars-photos-section {
-  flex: 1 1 48%;
-  background-color: rgba(255, 255, 255, 0.92);
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  padding: 15px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  box-sizing: border-box;
-  min-width: 300px;
-  display: flex;
-  flex-direction: column;
-  max-height: calc(100vh - 120px);
-  overflow-y: auto;
+  flex: 1 1 48%;
+  background-color: rgba(255, 255, 255, 0.92);
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  max-height: none;
+  overflow-y: visible;
 }
 
 #apod img,
 #apod iframe {
-  max-height: 350px;
-  width: auto;
-  object-fit: contain;
-  display: block;
-  margin: 0 auto;
-  border-radius: 8px;
+  max-height: 350px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+  border-radius: 8px;
 }
 
 #apod p {
-  max-height: 150px;
-  overflow-y: auto;
-  margin-top: 15px;
-  padding-right: 5px;
+  max-height: 150px;
+  overflow-y: auto;
+  margin-top: 15px;
+  padding-right: 5px;
+  color: #333;
 }
 
 img {
-  max-width: 100%;
-  border-radius: 8px;
+  max-width: 100%;
+  border-radius: 8px;
 }
 
 #mars-images-wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 15px;
-  max-height: 250px;
-  overflow-y: auto;
-  margin-bottom: 15px;
-  flex-shrink: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  max-height: 250px;
+  overflow-y: auto;
+  margin-bottom: 15px;
+  flex-shrink: 0;
 }
 
 #mars-images-wrapper > div {
-  width: 150px;
-  min-width: 150px;
-  max-width: 200px;
-  text-align: center;
-  flex-shrink: 0;
-  flex-grow: 0;
+  width: 150px;
+  min-width: 150px;
+  max-width: 200px;
+  text-align: center;
+  flex-shrink: 0;
+  flex-grow: 0;
 }
 
 #mars-images-wrapper img {
-  width: 150px;
-  height: auto;
-  display: block;
-  border-radius: 8px;
+  width: 150px;
+  height: auto;
+  display: block;
+  border-radius: 8px;
 }
 
 #apod-controls,
 #mars-controls {
-  margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 label {
-  margin-right: 8px;
-  font-weight: bold;
-  color: #333;
+  margin-right: 8px;
+  font-weight: bold;
+  color: #333;
 }
 
 button {
-  margin-top: 10px;
-  padding: 8px 12px;
-  background-color: #0077cc;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+  margin-top: 10px;
+  padding: 8px 12px;
+  background-color: #0077cc;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 button:hover {
-  background-color: #005fa3;
+  background-color: #005fa3;
 }
 
 canvas {
-  margin-top: 20px;
-  max-width: 100%;
-  height: 300px;
-  min-height: 200px;
-  flex-shrink: 0;
+  margin-top: 20px;
+  max-width: 100%;
+  height: 300px;
+  min-height: 200px;
+  flex-shrink: 0;
 }
 
 @media (max-width: 768px) {
-  #container {
-    flex-direction: column;
-  }
+  #container {
+    flex-direction: column;
+    gap: 15px;
+  }
 
-  #apod-section,
-  #mars-photos-section {
-    max-width: 100%;
-    max-height: none;
-    overflow-y: visible;
-  }
+  #apod-section,
+  #mars-photos-section {
+    max-width: 100%;
+    max-height: none;
+    overflow-y: visible;
+  }
 
-  #apod img,
-  #apod iframe {
-    max-height: 300px;
-  }
-  
-  #apod p {
-    max-height: none;
-    overflow-y: visible;
-  }
+  #apod img,
+  #apod iframe {
+    max-height: 300px;
+  }
 
-  #mars-images-wrapper {
-    max-height: none;
-    overflow-y: visible;
-  }
+  #apod p {
+    max-height: none;
+    overflow-y: visible;
+  }
 
-  #mars-images-wrapper > div {
-    width: 45%;
-    max-width: 250px;
-  }
+  #mars-images-wrapper {
+    max-height: none;
+    overflow-y: visible;
+  }
+
+  #mars-images-wrapper > div {
+    width: 45%;
+    max-width: 250px;
+  }
 }
