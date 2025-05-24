@@ -83,7 +83,7 @@ async function fetchMarsPhotos() {
 
       container.appendChild(img);
       imageWrapper.appendChild(container);
-      
+
       const cameraName = photo.camera.name;
       cameraCounts[cameraName] = (cameraCounts[cameraName] || 0) + 1;
     });
@@ -125,6 +125,12 @@ async function fetchMarsPhotos() {
         }
       }
     });
+
+    // --- RE-ADDED THESE CRUCIAL LINES ---
+    // These lines ensure the canvas has the desired visual height (300px)
+    // and width (100% of its container).
+    ctx.canvas.style.height = '300px';
+    ctx.canvas.style.width = '100%';
 
   } catch (error) {
     const photosDiv = document.getElementById('mars-photos');
