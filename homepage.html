@@ -3,42 +3,112 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Nadiatul Hamdan's Web Dashboard</title> <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <title>Nadiatul Hamdan's Web Dashboard Portfolio</title> <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
   <link rel="stylesheet" href="style.css" /> <style>
-  
+    /* Basic inline styles for consistency if style.css isn't fully integrated.
+       Ideally, move these into style.css. */
     body {
-      background: linear-gradient(to bottom, #0A0A2A, #000000); 
-      color: #E0E0E0; 
-      min-height: 100vh; 
-      display: flex; 
+      background: linear-gradient(to bottom, #0A0A2A, #000000); /* Match your dashboard background */
+      color: #E0E0E0; /* Match text color */
+      min-height: 100vh; /* Ensure full height background */
+      display: flex; /* Use flexbox for vertical centering */
       flex-direction: column;
-      justify-content: center;\
-      align-items: center; 
+      justify-content: center; /* Center content vertically */
+      align-items: center; /* Center content horizontally */
+      padding: 20px; /* Add some padding for smaller screens */
     }
     .container {
-      background-color: rgba(255, 255, 255, 0.05); 
+      background-color: rgba(255, 255, 255, 0.05); /* Slightly translucent background for contrast */
       padding: 30px;
       border-radius: 10px;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      max-width: 900px; /* Limit width for better readability */
+      width: 100%; /* Ensure it takes full width on small screens */
     }
-    h1 {
-        color: #FFFFFF; 
+    h1, h2 {
+        color: #FFFFFF; /* Match h1 color from dashboards */
+        margin-bottom: 20px;
+    }
+    p {
+        color: #E0E0E0; /* Ensure paragraph text is visible */
+        line-height: 1.6;
+        margin-bottom: 15px;
+    }
+    .dashboard-description {
+        background-color: rgba(0, 0, 0, 0.3);
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        text-align: left; /* Align text within descriptions */
+    }
+    .dashboard-description h3 {
+        color: #FFFFFF;
+        margin-top: 0;
+        margin-bottom: 10px;
+    }
+    .btn {
+        margin: 5px !important; /* Adjust button margins for better spacing */
+        min-width: 200px; /* Ensure buttons have a consistent minimum width */
     }
   </style>
 </head>
 <body>
-  <div class="container text-center"> <h1>Welcome to My Web Dashboard</h1>
-    <p class="lead">Developed by: Nadiatul Hamdan</p> <p>
-      Explore data-rich dashboards fetching information from various public APIs.
-      I've developed this project to demonstrate API integration, data visualization,
-      responsive web design, and CI/CD principles.
-    </p>
+  <div class="container text-center">
+    <h1>Welcome to My Web Dashboard Portfolio</h1>
 
-    <nav class="mt-4">
-      <a href="dashboard1.html" class="btn btn-primary m-2">Book Explorer Dashboard</a>
-      <a href="dashboard2.html" class="btn btn-info m-2">Space Explorer Dashboard</a> </nav>
-  </div>
+    <div class="about-me mb-5">
+        <h2>About Me</h2>
+        <p><strong>Name:</strong> Nadiatul Hamdan</p>
+        <p><strong>Matric No:</strong> [Your Matric Number Here]</p>
+        <p><strong>Interests:</strong> Web Development, API Integration, Data Visualization, UI/UX Design, Space Exploration, Reading</p>
+        <p>
+            This portfolio showcases my ability to design, develop, and deploy interactive web dashboards.
+            Each dashboard integrates with public APIs to fetch and visualize real-time data,
+            adhering to modern web design standards and demonstrating Continuous Integration/Deployment practices.
+        </p>
+    </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <hr style="border-top: 1px solid rgba(255, 255, 255, 0.1);" class="my-5">
+
+    <h2 class="mb-4">My Dashboards</h2>
+
+    <div class="dashboard-description">
+        <h3>Book Explorer Dashboard</h3>
+        <p>
+            This dashboard allows users to search for books and visualize their genre distribution.
+            It fetches book data from the **Google Books API**. Users can enter a title or author
+            to get a list of relevant books. The results are presented with details like author,
+            cover image, and a truncated description.
+        </p>
+        <p>
+            A key feature is the interactivity: users can click on any book card to open a new tab
+            with the full book details on Google Books. Additionally, the dashboard provides a
+            "Load More" option to fetch more results beyond the initial set, and a pie chart dynamically
+            displays the distribution of book genres based on the search results.
+        </p>
+        <a href="dashboard1.html" class="btn btn-primary mt-3">Go to Book Explorer Dashboard</a>
+    </div>
+
+    <div class="dashboard-description">
+        <h3>Space Explorer Dashboard</h3>
+        <p>
+            Dive into the cosmos with this dashboard, featuring real-time astronomical data.
+            This dashboard integrates with **NASA's Astronomy Picture of the Day (APOD) API**
+            and **NASA's Mars Rover Photos API**.
+        </p>
+        <p>
+            The **Astronomy Picture of the Day** section updates daily, showcasing a new cosmic image
+            or video with a detailed explanation. Users can also select past dates to explore the rich history
+            of APOD entries.
+        </p>
+        <p>
+            The **Mars Rover Photos** section allows users to browse recent images taken by NASA's Mars rovers.
+            Users can select different rovers and even specific cameras to filter photos from the Martian surface.
+            This provides a fascinating glimpse into humanity's exploration of the Red Planet.
+        </p>
+        <a href="dashboard2.html" class="btn btn-info mt-3">Go to Space Explorer Dashboard</a>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
