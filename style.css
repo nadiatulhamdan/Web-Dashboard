@@ -163,15 +163,16 @@ label {
   color: #333;
 }
 
+/* Updated chart styles */
 canvas {
-  margin-top: 20px;
-  width: 80%; /* Increased width to take more space */
-  height: 400px; /* Increased height for a larger chart */
+  margin-top: 10px; /* Reduced margin-top slightly */
+  width: 90%; /* Increased width to take more space, from 80% */
+  height: 350px; /* Adjusted height for a more balanced look, from 400px */
   min-height: 200px;
   flex-shrink: 0;
-  display: block; /* Ensure it behaves as a block element for centering */
-  margin-left: auto; /* Center the canvas */
-  margin-right: auto; /* Center the canvas */
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 body > button {
@@ -281,7 +282,7 @@ body > button {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   margin-top: 30px;
   text-align: left;
-  max-width: 1400px;
+  max-width: 1400px; /* This sets the max-width for the entire chart section */
   margin-left: auto;
   margin-right: auto;
 }
@@ -294,8 +295,11 @@ body > button {
 
 .chart-container {
   position: relative;
-  height: 300px; /* This height is for the container, not the canvas itself */
-  width: 100%;
+  /* Removed fixed height from here, letting canvas control it */
+  width: 100%; /* Ensure container takes full width of its parent */
+  display: flex; /* Use flexbox to potentially center content if needed */
+  justify-content: center; /* Center the canvas horizontally */
+  align-items: center; /* Center the canvas vertically */
 }
 
 .main-content-wrapper {
@@ -330,6 +334,7 @@ body > button {
     color: #333;
     border: none;
     transition: all 0.3s ease;
+    animation: pulse 2s infinite ease-in-out; /* Added pulsating animation */
 }
 
 .hero-section .btn-light:hover {
@@ -390,8 +395,8 @@ body > button {
 }
 
 .dashboard-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    transform: translateY(-10px) scale(1.02); /* Lifts higher and slightly scales up */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(255, 255, 255, 0.3); /* Stronger shadow + subtle white glow */
 }
 
 .dashboard-card h3 {
@@ -410,6 +415,21 @@ body > button {
 .dashboard-card .btn {
     align-self: flex-start;
     margin-top: 20px;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+    }
+    70% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 20px rgba(255, 255, 255, 0);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+    }
 }
 
 @media (max-width: 1200px) {
