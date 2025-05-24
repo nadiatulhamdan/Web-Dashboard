@@ -81,7 +81,9 @@ button:hover {
   padding: 0 20px;
   box-sizing: border-box;
   width: 100%;
-  max-width: 1200px;
+  max-width: 95%; /* Increased max-width for dashboards to take more space */
+  margin-left: auto; /* Center the container */
+  margin-right: auto; /* Center the container */
 }
 
 #apod-section,
@@ -182,7 +184,7 @@ body > button {
   min-height: 100px;
   text-align: left;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  max-width: 1200px;
+  max-width: 95%; /* Increased max-width for book container */
   margin-left: auto;
   margin-right: auto;
   
@@ -276,7 +278,7 @@ body > button {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   margin-top: 30px;
   text-align: left;
-  max-width: 1200px;
+  max-width: 95%; /* Increased max-width for chart section */
   margin-left: auto;
   margin-right: auto;
 }
@@ -293,7 +295,6 @@ body > button {
   width: 100%;
 }
 
-/* Homepage specific styles */
 .main-content-wrapper {
     width: 100%;
     max-width: 1200px;
@@ -407,7 +408,6 @@ body > button {
     align-self: flex-start;
     margin-top: 20px;
 }
-
 
 @media (max-width: 1200px) {
     .book-item {
