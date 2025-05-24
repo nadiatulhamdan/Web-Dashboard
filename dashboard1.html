@@ -1,29 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Book Explorer</title>
-  <link rel="stylesheet" href="style.css" />
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Book Explorer</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-  <h1>📚 Book Explorer</h1>
+    <h1>📚 Book Explorer</h1>
 
-  <input type="text" id="searchTerm" placeholder="Search for books..." />
-  <button onclick="searchBooks()">Search</button>
-
-  <div id="chart-section" style="margin-top: 30px; padding: 20px; background-color: rgba(255, 255, 255, 0.9); border-radius: 8px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); display: none;">
-    <h2>Genre Distribution</h2>
-    <div class="chart-container" style="position: relative; height:300px; width:100%;">
-      <canvas id="genreChart"></canvas>
+    <div class="search-controls"> <input type="text" id="searchTerm" placeholder="Search for books..." />
+        <select id="keywordSelect" onchange="useSelectedKeyword()">
+            <option value="mystery">Mystery</option>
+            <option value="biography">Biography</option>
+            <option value="history">History</option>
+            <option value="cooking">Cooking</option>
+            <option value="poetry">Poetry</option>
+            <option value="travel">Travel</option>
+            <option value="self-help">Self-Help</option>
+        </select>
+        <button onclick="searchBooks()">Search</button>
     </div>
-  </div>
 
-  <div id="books-container">
-      <p>Search for books above.</p>
-  </div>
+    <div id="chart-section" style="margin-top: 30px; padding: 20px; background-color: rgba(255, 255, 255, 0.9); border-radius: 8px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); display: none;">
+        <h2>Genre Distribution</h2>
+        <div class="chart-container" style="position: relative; height:300px; width:100%;">
+            <canvas id="genreChart"></canvas>
+        </div>
+    </div>
 
-  <script src="scripts/books.js"></script>
+    <div id="books-container">
+        <p>Search for books above.</p>
+    </div>
+
+    <script src="scripts/books.js"></script>
 </body>
 </html>
