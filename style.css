@@ -2,11 +2,15 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 20px;
-  background: linear-gradient(to bottom, #0A0A2A, #000000);
+  background: linear-gradient(to bottom right, #4a7791, #6a9ac4);
   background-attachment: fixed;
   min-height: 100vh;
   color: #E0E0E0;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 h1 {
@@ -21,6 +25,8 @@ input[type="text"] {
   border-radius: 5px;
   border: 1px solid #ccc;
   margin-right: 10px;
+  background-color: #f0f0f0;
+  color: #333;
 }
 
 button {
@@ -36,7 +42,6 @@ button:hover {
   background-color: #005fa3;
 }
 
-/* Space Explorer Specific Styles (retained) */
 .top-container-padding {
   padding-top: 15px !important;
 }
@@ -44,11 +49,13 @@ button:hover {
 .apod-title {
   text-align: center;
   margin-bottom: 10px;
+  color: #333;
 }
 
 #mars-photos-section h2 {
   text-align: center;
   margin-bottom: 10px;
+  color: #333;
 }
 
 .apod-dynamic-title,
@@ -56,6 +63,7 @@ button:hover {
   text-align: center;
   margin-top: 15px;
   margin-bottom: 10px;
+  color: #333;
 }
 
 #container {
@@ -65,16 +73,18 @@ button:hover {
   gap: 20px;
   padding: 0 20px;
   box-sizing: border-box;
+  width: 100%;
+  max-width: 1200px;
 }
 
 #apod-section,
 #mars-photos-section {
   flex: 1 1 48%;
-  background-color: rgba(255, 255, 255, 0.92);
-  border: 1px solid #ccc;
+  background-color: rgba(255, 255, 255, 0.98);
+  border: 1px solid #e0e0e0;
   border-radius: 10px;
   padding: 15px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
   min-width: 300px;
   display: flex;
@@ -152,8 +162,6 @@ canvas {
   flex-shrink: 0;
 }
 
-/* --- Book Explorer Specific Styles --- */
-
 body > button {
   margin-top: 10px;
 }
@@ -161,12 +169,12 @@ body > button {
 #books-container {
   margin-top: 30px;
   padding: 15px;
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(255, 255, 255, 0.98);
   color: #333;
   border-radius: 8px;
   min-height: 100px;
   text-align: left;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
@@ -193,26 +201,26 @@ body > button {
 }
 
 .book-item {
-  background-color: #f8f8f8;
-  border: 1px solid #ddd;
+  background-color: #ffffff;
+  border: 1px solid #eee;
   border-radius: 8px;
   padding: 15px;
   width: calc(33.333% - 20px); 
   max-width: 380px;
   text-align: center;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   box-sizing: border-box;
 
-  cursor: pointer; /* Indicate it's clickable */
-  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Smooth hover effect */
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
 .book-item:hover {
-    transform: translateY(-5px); /* Lift card on hover */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* More prominent shadow on hover */
+    transform: translateY(-5px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
 }
 
 .book-item h3 {
@@ -228,22 +236,17 @@ body > button {
   -webkit-box-orient: vertical;
 }
 
-/* Updated .book-item p - removed .expanded related styles */
 .book-item p.book-description {
   font-size: 0.9em;
   color: #666;
-  margin-bottom: 5px; /* Reduced margin since no button is below */
+  margin-bottom: 5px;
   flex-grow: 1;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 6; /* Allow more lines by default before truncation */
+  -webkit-line-clamp: 6;
   -webkit-box-orient: vertical;
 }
-
-/* Removed .read-more-btn specific styles */
-/* .read-more-btn { ... } */
-
 
 .book-item img {
   max-width: 100%;
@@ -259,11 +262,11 @@ body > button {
 }
 
 #chart-section {
-  background-color: rgba(255, 255, 255, 0.92);
-  border: 1px solid #ccc;
+  background-color: rgba(255, 255, 255, 0.98);
+  border: 1px solid #e0e0e0;
   border-radius: 10px;
   padding: 15px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   margin-top: 30px;
   text-align: left;
   max-width: 1200px;
@@ -283,7 +286,25 @@ body > button {
   width: 100%;
 }
 
-/* Media Query Adjustments */
+.container.text-center {
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    max-width: 900px;
+    width: 100%;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.dashboard-description {
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
 @media (max-width: 1200px) {
     .book-item {
         width: calc(33.333% - 20px);
@@ -365,7 +386,7 @@ body > button {
 
   .book-item p.book-description {
     font-size: 0.8em;
-    -webkit-line-clamp: 5; /* Adjusted for smaller screens */
+    -webkit-line-clamp: 5;
   }
 
   .book-item img {
