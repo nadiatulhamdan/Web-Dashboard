@@ -5,60 +5,71 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Nadiatul Hamdan's Web Dashboard Portfolio</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
-  <link rel="stylesheet" href="style.css" /> </head>
+  <link rel="stylesheet" href="style.css" />
+</head>
 <body>
-  <div class="container text-center">
-    <h1>Welcome to My Web Dashboard Portfolio</h1>
+  <div class="main-content-wrapper"> <header class="hero-section text-center py-5 mb-5">
+        <h1>Welcome to My Web Dashboard Portfolio</h1>
+        <p class="lead">Interactive data visualization powered by public APIs.</p>
+        <a href="#dashboards-section" class="btn btn-light btn-lg mt-3">Explore Dashboards</a>
+    </header>
 
-    <div class="about-me mb-5">
-        <h2>About Me</h2>
-        <p><strong>Name:</strong> NADIATUL ATIEYRAH AFZA BINTI HAMDAN</p>
-        <p><strong>Matric No:</strong> 072664</p>
-        <p><strong>Interests:</strong> Web Development, API Integration, Data Visualization, UI/UX Design, Space Exploration, Reading</p>
-        <p>
-            This portfolio demonstrates my abilities to design, build, and deploy interactive online dashboards.
-            The dashboards use public APIs to display real-time data
-            while following modern web design standards and Continuous Integration/Deployment techniques.
-        </p>
+    <div class="container my-5">
+        <section class="about-me mb-5 p-4 rounded shadow-lg text-start">
+            <h2>About Me</h2>
+            <p><strong>Name:</strong> NADIATUL ATIEYRAH AFZA BINTI HAMDAN</p>
+            <p><strong>Matric No:</strong> 072664</p>
+            <p><strong>Interests:</strong> Web Development, API Integration, Data Visualization, UI/UX Design, Space Exploration, Reading</p>
+            <p>
+                This portfolio demonstrates my abilities to design, build, and deploy interactive online dashboards.
+                The dashboards use public APIs to display real-time data
+                while following modern web design standards and Continuous Integration/Deployment techniques.
+            </p>
+        </section>
+
+        <hr class="my-5 custom-hr">
+
+        <section id="dashboards-section" class="dashboards-overview">
+            <h2 class="text-center mb-4">My Dashboards</h2>
+
+            <div class="row g-4"> <div class="col-md-6"> <div class="dashboard-card p-4 rounded shadow-lg h-100">
+                        <h3>📚 Book Explorer Dashboard</h3>
+                        <p>
+                            This dashboard enables users to search for books and see their genre distribution.
+                            It accesses book data from the **Google Books API**. Users can search for books based on
+                            their title or author. The results include author information, cover image, and a brief description.
+                        </p>
+                        <p>
+                            The interactive feature allows users to open a new tab with full book data from Google Books by clicking on any book card.
+                            The dashboard offers a "Load More" option for more results, as well as a pie chart that
+                            shows the distribution of book categories based on searches.
+                        </p>
+                        <a href="dashboard1.html" class="btn btn-primary mt-3">Go to Book Explorer</a>
+                    </div>
+                </div>
+
+                <div class="col-md-6"> <div class="dashboard-card p-4 rounded shadow-lg h-100">
+                        <h3>🚀 Space Explorer Dashboard</h3>
+                        <p>
+                            Dive into the universe with this dashboard, which displays real-time astronomical data.
+                            The dashboard combines with **NASA's Astronomy Picture of the Day (APOD) API** and **Mars Rover Photos API**.
+                        </p>
+                        <p>
+                            Every day, the **Astronomy Picture of the Day** section features a new cosmic image or video, accompanied by thorough explanations.
+                            Users can view past APOD entries by selecting specific dates.
+                        </p>
+                        <p>
+                            The **Mars Rover Photos** feature allows viewers to view recent photographs captured by NASA's Mars rovers.
+                            Users can filter photographs from the Martian surface by selecting different rovers or even specific cameras.
+                            This offers an intriguing look at humanity's exploration of the Red Planet.
+                        </p>
+                        <a href="dashboard2.html" class="btn btn-info mt-3">Go to Space Explorer</a>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
-
-    <hr style="border-top: 1px solid rgba(255, 255, 255, 0.1);" class="my-5">
-
-    <h2 class="mb-4">My Dashboards</h2>
-
-    <div class="dashboard-description">
-        <h3>Book Explorer Dashboard</h3>
-        <p>
-            This dashboard enables users to search for books and see their genre distribution.
-            It accesses book data from the Google Books API. Users can search for books based on
-            their title or author. The results include author information, cover image, and a brief description.
-        </p>
-        <p>
-            The interactive feature allows users to open a new tab with full book data from Google Books by clicking on any book card.
-            The dashboard offers a "Load More" option for more results, as well as a pie chart that
-            shows the distribution of book categories based on searches.
-        </p>
-        <a href="dashboard1.html" class="btn btn-primary mt-3">Go to Book Explorer Dashboard</a>
-    </div>
-
-    <div class="dashboard-description">
-        <h3>Space Explorer Dashboard</h3>
-        <p>
-            Dive into the universe with this dashboard, which displays real-time astronomical data.
-            The dashboard combines with NASA's Astronomy Picture of the Day (APOD) API and Mars Rover Photos API.
-        </p>
-        <p>
-            Every day, the Astronomy Picture of the Day section features a new cosmic image or video, 
-            accompanied by thorough explanations. Users can view past APOD entries by selecting specific dates.
-        </p>
-        <p>
-            The Mars Rover Photos feature allows viewers to view recent photographs captured by NASA's Mars rovers.
-            Users can filter photographs from the Martian surface by selecting different rovers or even specific cameras.
-            This offers an intriguing look at humanity's exploration of the Red Planet.
-        </p>
-        <a href="dashboard2.html" class="btn btn-info mt-3">Go to Space Explorer Dashboard</a>
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+  </div> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
