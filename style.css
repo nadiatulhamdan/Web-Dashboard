@@ -8,7 +8,7 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background: linear-gradient(270deg, #5B8C85, #8EB897, #4A6D7C); /* Muted greens and blue-greens */
+  background: linear-gradient(270deg, #6C5B7B, #8C82B3, #4E5F81); /* Muted purple, soft lilac, dusky blue */
   background-size: 600% 600%;
   animation: gradientAnimation 15s ease infinite;
   min-height: 100vh;
