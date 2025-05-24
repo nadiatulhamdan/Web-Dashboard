@@ -126,9 +126,6 @@ async function fetchMarsPhotos() {
       }
     });
 
-    ctx.canvas.style.height = '300px';
-    ctx.canvas.style.width = '100%';
-
   } catch (error) {
     const photosDiv = document.getElementById('mars-photos');
     photosDiv.textContent = 'Failed to load Mars photos. Please check your network connection or API key.';
