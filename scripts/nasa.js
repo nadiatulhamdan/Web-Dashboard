@@ -89,6 +89,10 @@ async function fetchMarsPhotos() {
     });
 
     const ctx = document.getElementById('marsChart').getContext('2d');
+
+    ctx.canvas.height = 300; // Set the internal rendering height to 300 pixels
+    ctx.canvas.width = ctx.canvas.offsetWidth; // Set width to current rendered width
+
     if (marsChartInstance) {
       marsChartInstance.destroy();
     }
@@ -109,7 +113,7 @@ async function fetchMarsPhotos() {
       },
       options: {
         responsive: true,
-        maintainAspectRatio: false,
+        maintainAspectRatio: false, // Keep this false to allow independent height/width control
         plugins: {
           title: {
             display: true,
@@ -122,13 +126,11 @@ async function fetchMarsPhotos() {
               color: '#333'
             }
           }
-        }
+        },
+        aspectRatio: 1 // For a pie chart, a 1:1 aspect ratio is usually desired
       }
     });
 
-    // --- RE-ADDED THESE CRUCIAL LINES ---
-    // These lines ensure the canvas has the desired visual height (300px)
-    // and width (100% of its container).
     ctx.canvas.style.height = '300px';
     ctx.canvas.style.width = '100%';
 
