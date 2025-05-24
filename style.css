@@ -417,6 +417,28 @@ body > button {
     margin-top: 20px;
 }
 
+.search-controls {
+    display: flex; /* Use flexbox to align children */
+    gap: 10px; /* Space between elements */
+    align-items: center; /* Vertically align them */
+    margin-bottom: 20px; /* Space below the search controls */
+}
+
+/* Adjust input and select width within the flex container */
+.search-controls input[type="text"] {
+    flex-grow: 1; /* Allow the input to take up available space */
+    max-width: 300px; /* Limit its max width */
+}
+
+.search-controls select {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: #f0f0f0;
+    color: #333;
+    cursor: pointer;
+}
+
 @keyframes pulse {
     0% {
         transform: scale(1);
