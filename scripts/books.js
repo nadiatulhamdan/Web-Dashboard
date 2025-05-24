@@ -3,10 +3,35 @@ let currentSearchQuery = ''; // To store the last successful search query
 let startIndex = 0; // To keep track of the starting index for pagination
 const maxResultsPerRequest = 10; // Number of books to fetch per API call
 
+// NEW FUNCTION: Handles keyword selection from the dropdown
+function useSelectedKeyword() {
+    const keywordSelect = document.getElementById('keywordSelect');
+    const searchTermInput = document.getElementById('searchTerm');
+
+    // If a keyword is selected (i.e., not the empty "Or select a keyword..." option)
+    if (keywordSelect.value !== "") {
+        searchTermInput.value = keywordSelect.value; // Put the selected keyword into the text input
+        // You can optionally call searchBooks() here directly if you want the search to trigger automatically
+        // as soon as a keyword is selected, instead of requiring a separate click on the search button.
+        // If you uncomment the line below, make sure the user understands this behavior.
+        // searchBooks();
+    }
+}
+
+
 async function searchBooks(loadMore = false) { // Added a 'loadMore' parameter
+    // IMPORTANT: Get the query from the text input first, as it might have been set by the dropdown
     const query = document.getElementById('searchTerm').value.trim();
     const container = document.getElementById('books-container');
     const chartSection = document.getElementById('chart-section');
+
+    // NEW: Reset the dropdown after a search to ensure it goes back to "Or select a keyword..."
+    // This provides clearer UX: after a search, the dropdown is ready for a new selection.
+    const keywordSelect = document.getElementById('keywordSelect');
+    if (keywordSelect) { // Check if the element exists to prevent errors
+        keywordSelect.value = ""; // Set it back to the default empty option
+    }
+
 
     if (!loadMore) { // If it's a new search, reset everything
         currentSearchQuery = query;
@@ -18,8 +43,6 @@ async function searchBooks(loadMore = false) { // Added a 'loadMore' parameter
             return;
         }
         container.innerHTML = '<p>Loading...</p>';
-        // IMPORTANT: Do NOT hide chartSection here for initial search if you want it to show up.
-        // It will be set to 'block' later if there's data.
     } else {
         // If loading more, ensure there's a query and display loading message
         if (!currentSearchQuery) return; // Should not happen if Load More button is correctly displayed
@@ -68,7 +91,7 @@ async function searchBooks(loadMore = false) { // Added a 'loadMore' parameter
             bookListDiv.classList.add('book-list');
             container.appendChild(bookListDiv);
         }
-        
+
         // Remove previous "Load More" button if it exists before adding new books
         const existingLoadMoreButton = document.getElementById('loadMoreBtn');
         if (existingLoadMoreButton) {
@@ -101,7 +124,7 @@ async function searchBooks(loadMore = false) { // Added a 'loadMore' parameter
                     window.open(div.dataset.infoLink, '_blank');
                 }
             });
-            
+
             if (book.categories && Array.isArray(book.categories)) {
                 book.categories.forEach(category => {
                     const mainCategory = category.split(' / ')[0].trim();
@@ -196,5 +219,12 @@ async function searchBooks(loadMore = false) { // Added a 'loadMore' parameter
         console.error(error);
         if (genreChartInstance) genreChartInstance.destroy();
         chartSection.style.display = 'none'; // Hide chart on error
+    } finally {
+        // Re-enable load more button if it was disabled
+        const loadMoreButton = document.getElementById('loadMoreBtn');
+        if (loadMoreButton) {
+            loadMoreButton.textContent = 'Load More';
+            loadMoreButton.disabled = false;
+        }
     }
 }
